@@ -15,6 +15,7 @@
     cd ..Scripts
 # Step 3: có 2 cách
     activate
+    or
     .\activate
 
 # Chạy thư viện Chatterbot  
