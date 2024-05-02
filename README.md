@@ -23,3 +23,5 @@
 
 # Training Data - Chạy file app.py
     python app.py
+
+- File app.py 'trainer.train("chatterbot.corpus.vietnamese")' trong đó vietnamese là data tự tạo / chỉnh sửa hoặc sử dụng có sẵn trong library
