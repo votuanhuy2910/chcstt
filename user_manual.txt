@@ -1,4 +1,6 @@
 # Hướng dẫn cài đặt và sử dụng Chatbot
+# Github: https://github.com/votuanhuy2910/chcstt
+
 Required: python version==3.7.2
 
 - Tạo môi trường ảo
