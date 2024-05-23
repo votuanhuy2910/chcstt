@@ -4,9 +4,12 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 
 app = Flask(__name__)
 
-english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
+english_bot = ChatBot(
+    "Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter"
+)
 trainer = ChatterBotCorpusTrainer(english_bot)
-trainer.train("chatterbot.corpus.vietnamese")
+trainer.train("chatterbot.corpus.vietnam")
+
 
 @app.route("/")
 def home():
@@ -14,9 +17,10 @@ def home():
 
 @app.route("/get")
 def get_bot_response():
-    userText = request.args.get('msg')
-    return str(english_bot.get_response(userText))
-
+    userText = request.args.get("msg")
+    response = str(english_bot.get_response(userText))
+    response = response.replace('\\n', '\n')
+    return response
 
 if __name__ == "__main__":
     app.run()

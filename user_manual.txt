@@ -1,0 +1,15 @@
+# Hướng dẫn cài đặt và sử dụng Chatbot
+Required: python version==3.7.2
+
+- Tạo môi trường ảo
+
+- Kích hoạt môi trường ảo
+
+- Tải thư viện Chatterbot
+    python -m pip install chatterbot==1.0.4 pytz
+
+- Chạy file app.py
+    python app.py
+
+- Training Data
+    C:\Users\{NameComputer}\{PositionFolder}\chatbot\venv\Lib\site-packages\chatterbot_corpus\data\vietnam

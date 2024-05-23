@@ -21,7 +21,7 @@
 							<span>Hi! I'm Chatbot.</span>
 						</p>
 					</div> -->
-	
+
 					<!-- <div class="avatar">
 						<div style="display: flex; align-items: center;">
 							<img src="/static/vo.webp" alt="">
@@ -64,12 +64,27 @@
 				</button>
 			</div>
 
+			<button id="openPopupBtn">Open PDF</button>
+
+			<div id="pdfPopup" class="popup">
+				<div class="popup-content">
+					<span class="close-btn" id="closePopupBtn">&times;</span>
+					<iframe
+						src="/static/Lap trinh C++ - FINAL.pdf"
+						width="100%"
+						height="600px"
+					></iframe>
+				</div>
+			</div>
+
 			<script>
 				function getBotResponse() {
 					var rawText = $('#textInput').val().trim()
 					if (rawText == '') return
 					var userHtml =
-						'<div class="avatar"><div style="display: flex; align-items: center;"><img src="/static/vo.webp" alt="" style="float: right;"><span style="margin-left: 1rem; font-size: 20px; font-weight: bold; font-family: monospace;">User</span></div><p class="userText"><span>' + rawText +'</span></p></div>'
+						'<div class="avatar"><div style="display: flex; align-items: center;"><img src="/static/imgUser.webp" alt="" style="float: right;"><span style="margin-left: 1rem; font-size: 20px; font-weight: bold; font-family: monospace;">User</span></div><p class="userText"><span>' +
+						rawText +
+						'</span></p></div>'
 					$('#textInput').val('')
 					$('#chatbox').append(userHtml)
 
@@ -79,8 +94,11 @@
 						.getElementById('userInput')
 						.scrollIntoView({ block: 'start', behavior: 'smooth' })
 					$.get('/get', { msg: rawText }).done(function (data) {
+						// var botResponse = data.replace(/\n/g, '<br>&emsp;')
 						var botHtml =
-							'<div class="avatar"><div style="display: flex; align-items: center;"><img src="/static/images.png" alt=""><span style="margin-left: 1rem; font-size: 20px; font-weight: bold; font-family: monospace;">Chatbot</span></div><p class="botText"><span>' + data +'</span></p></div>'
+							'<div class="avatar"><div style="display: flex; align-items: center;"><img src="/static/imgChatbot.png" alt=""><span style="margin-left: 1rem; font-size: 20px; font-weight: bold; font-family: monospace;">Chatbot</span></div><p class="botText"><span>' +
+							data +
+							'</span></p></div>'
 						$('#chatbox').append(botHtml)
 
 						$('#chatbox').scrollTop($('#chatbox')[0].scrollHeight)
@@ -96,6 +114,24 @@
 				$('#buttonInput').click(function () {
 					getBotResponse()
 				})
+			</script>
+
+			<script>
+				document.getElementById('openPopupBtn').onclick = function () {
+					document.getElementById('pdfPopup').style.display = 'block'
+				}
+
+				document.getElementById('closePopupBtn').onclick = function () {
+					document.getElementById('pdfPopup').style.display = 'none'
+				}
+
+				// Close the popup if the user clicks anywhere outside of the popup content
+				window.onclick = function (event) {
+					if (event.target == document.getElementById('pdfPopup')) {
+						document.getElementById('pdfPopup').style.display =
+							'none'
+					}
+				}
 			</script>
 		</div>
 	</body>
